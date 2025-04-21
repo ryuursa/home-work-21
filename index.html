@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Advanced JS Homework</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 30px;
+    }
+    .block {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    h2 { margin-top: 0; color: #333; }
+    p { margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <h1>📘 Advanced JS Homework</h1>
+
+  <div class="block" id="curriedAddBlock"></div>
+  <div class="block" id="curriedDomainBlock"></div>
+  <div class="block" id="modifyFunctionBlock"></div>
+  <div class="block" id="nestedFunctionBlock"></div>
+
+  <script type="module">
+     import { curriedAdd } from './curriedAdd.js';
+  import { curriedDomain } from './curriedDomain.js';
+  import { originalFunction, modifyFunction } from './modifyFunction.js';
+  import { outerFunction } from './nestedFunction.js';
+    const curriedAddBlock = document.getElementById('curriedAddBlock');
+    curriedAddBlock.innerHTML = `
+      <h2>#9: Curried Add</h2>
+      <p>curriedAdd(1)(2)(3) = <strong>${curriedAdd(1)(2)(3)}</strong></p>
+    `;
+
+    const curriedDomainBlock = document.getElementById('curriedDomainBlock');
+    curriedDomainBlock.innerHTML = `
+      <h2>#10: Curried Domain</h2>
+      <p>curriedDomain('https')('example')('com') = <strong>${curriedDomain('https')('example')('com')}</strong></p>
+    `;
+
+    const modifyFunctionBlock = document.getElementById('modifyFunctionBlock');
+    const modified = modifyFunction(originalFunction, 3);
+    modifyFunctionBlock.innerHTML = `
+      <h2>#11: Modify Function</h2>
+      <p>originalFunction(4) = <strong>${originalFunction(4)}</strong></p>
+      <p>modifiedFunction(4) = <strong>${modified(4)}</strong></p>
+    `;
+
+    const nestedFunctionBlock = document.getElementById('nestedFunctionBlock');
+    nestedFunctionBlock.innerHTML = `
+      <h2>#12: Nested Function (3 Levels)</h2>
+      <p>outerFunction(2)(3)(4) = <strong>${outerFunction(2)(3)(4)}</strong></p>
+    `;
+  </script>
+</body>
+</html>
